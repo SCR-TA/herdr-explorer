@@ -611,7 +611,7 @@ function settingsItems() {
     cache.clear();
     buildRows();
     if (name === 'follow') { lastCwd = null; follow(); }
-    if (name === 'side') return 'Applies to the next tabs';
+    if (name === 'side' || name === 'autoOpen') return 'Applies to the next tabs';
     return null;
   };
   return [
@@ -626,6 +626,7 @@ function settingsItems() {
     [check(settings.singleClick) + 'Preview on single click', flip('singleClick')],
     [check(settings.follow) + 'Follow the terminal folder', flip('follow')],
     [check(settings.side === 'right') + 'Dock on the right', flip('side', settings.side === 'right' ? 'left' : 'right')],
+    [check(settings.autoOpen) + 'Open in new tabs', flip('autoOpen')],
     ['  Icon theme…', () => openIconThemes()],
     ['  Edit key bindings…', () => {
       const file = keysTemplate('explorer', DEFAULT_KEYS);
